@@ -1,0 +1,35 @@
+//////////inserting data in mongo db or inserting data in datbase ..mongod is database and mongo is command shell
+
+1)use savedata --> savedata nam e ekta database form hye jabe and use hte suru krbe 
+
+2)db.items.insertOne({name:"samsung 30s", price:22000 , rating: 4.5, qty:233,sold:98})  -->with in bracket use an object and insert it in savedata and thats object called as documents in NOSQL....items ekta collection in NOSQL....with in collection we can insert a object/data and insertOne is a function
+
+3)db.items.insertMany([{name:"samsung 30s", price:22000 , rating: 4.5, qty:233,sold:98},{name:"samsung galaxy m2 pro", price:19000 , rating: 4.8, qty:278,sold:598},{name:"redminote 8 pro", price:29000 , rating: 4.5, qty:7233,sold:998}]) ---> to insert multiple object/ more than one object u have to use insertMany function
+
+4) db.items.find()  ----->to find all data in savedata database(called as query)
+
+5) show dbs   --> that show all dbs in mongod server
+
+////////////searching data from mongodb
+
+1) show collections ---->to show collections name(like items in savedata)
+
+2) db.items.find()  ----->to find all data/documents in savedata database(called as query)
+
+3) db.items.find({price: 19000})  ----->jei documentobject tar price:19000 er sthe matchkre sei document ta asbe.....this query will retun all the objects with price equal to 19000......and the {price:1900} is called as the filter object
+
+4) db.items.find({price: {$gte:20000}}) --->complex filters ...jei jei object er price >=19000 se gulo print hbe....greater than equal 
+
+   db.items.find({rating: {$gt:4.5}})    --->complex filters ...jei jei object er rating >4.5 se gulo print hbe
+
+5) db.items.find({price: {$lte:22000}}) --->complex filters ...jei jei object er price <=19000 se gulo print hbe....lesser than equal 
+     
+     db.items.find({rating: {$lt:4.6}})    --->complex filters ...jei jei object er rating <4.6 se gulo print hbe
+
+6)  db.items.find({rating: {$gt:4.5}, price:{$gt:16000}})   ---> and operator by ,    .... duto condition e satis fy krte hbe
+
+7)db.items.find({$or:[{rating: {$gt:3.5}}, {price:{$gt:99999999}}]})    ----> or opeartor.... array[] use krte hbe and {} diye object banate hbve
+
+8) db.items.find({rating: {$gt:4.5}},{rating:1}) --->complex filters ...jei jei object er rating >4.5 se gulo print hbe and sei objct gulor only rating print hbe....the 2nd parameter called as projection 
+
+     db.items.find({rating: {$gt:4.5}},{rating:1,name:1})   --->complex filters ...jei jei object er rating >4.5 se gulo print hbe and sei object gulor rating and name print hbe
